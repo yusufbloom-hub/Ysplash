@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ysplash | Minecraft Hub</title>
+    <style>
+        /* Animated Red Nebula Background */
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(125deg, #0f0000, #2b0000, #000000, #4a0000);
+            background-size: 400% 400%;
+            animation: nebulaMove 15s ease infinite;
+            color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            min-height: 100vh;
+        }
+
+        @keyframes nebulaMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Subtle Star Overlay */
+        .stars {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: transparent url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/123163/stars.png') repeat;
+            opacity: 0.3;
+        }
+
+        .container { max-width: 900px; margin: auto; padding: 2rem; text-align: center; }
+        
+        /* Updated Logo to Red */
+        header h1 { 
+            font-size: 4.5rem; 
+            color: #FF0000; 
+            text-shadow: 4px 4px #4a0000, 0 0 20px rgba(255, 0, 0, 0.5); 
+            margin-bottom: 0.5rem; 
+            letter-spacing: 5px;
+        }
+        
+        .section {
+            background: rgba(10, 0, 0, 0.85);
+            border: 1px solid #660000;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.1);
+        }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+
+        .card {
+            background: #111;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #330000;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover { border-color: #FF0000; box-shadow: 0 0 10px rgba(255, 0, 0, 0.3); }
+
+        .btn {
+            display: inline-block;
+            background: #FF0000;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .btn:hover { background: #cc0000; transform: translateY(-2px); }
+
+        /* Video Outline Changed to Red */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0; overflow: hidden;
+            border-radius: 8px;
+            border: 3px solid #FF0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        .ip-box { 
+            background: #000; 
+            padding: 15px; 
+            border: 2px dashed #FF0000; 
+            font-family: monospace; 
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #FF0000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars"></div>
+
+    <div class="container">
+        <header>
+            <h1>YSPLASH</h1>
+            <p>Official Minecraft Resource Hub</p>
+            <a href="well put when channel done" target="_blank" class="btn">Subscribe to Channel</a>
+        </header>
+
+        <div class="section">
+            <h2>Latest Video</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Server Connection</h2>
+            <div class="card">
+                <div class="ip-box" id="serverIP">NO server yet</div>
+                <button class="btn" onclick="copyIP()">Copy Server IP</button>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="section">
+                <h3>Packs</h3>
+                <div class="card">
+                    <h4>COMING SOON</h4>
+                    <a href="pack.zip" download class="btn">Download</a>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Skins</h3>
+                <div class="card">
+                    <h4>Main Skin</h4>
+                    <a href="ysplash_skin.png" download class="btn">Download</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyIP() {
+            const ip = document.getElementById('serverIP').innerText;
+            navigator.clipboard.writeText(ip).then(() => {
+                alert("IP Copied! Time to hop on.");
+            });
+        }
+    </script>
+
+</body>
+</html>
